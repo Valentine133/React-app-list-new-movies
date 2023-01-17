@@ -77,11 +77,11 @@ const MovieList = (props) => {
     <div className="movie__list">
       {errorMessage}
       {spinner}
-      {items}
+      {items} 
       <button 
             disabled={newItemLoading} 
             style={{'display' : movieEnded ? 'none' : 'block'}}
-            className="btn btn-primary btn-lg m-auto mt-4"
+            className="btn btn-primary btn-lg m-auto mt-5"
             onClick={() => onRequest(offset)}>
             <div className="inner">Load more</div>
         </button>
