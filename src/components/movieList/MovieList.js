@@ -15,7 +15,7 @@ const MovieList = (props) => {
       onRequest(offset, true);
   }, [])
 
-  const onRequest = (initial) => {
+  const onRequest = (offset, initial) => {
       initial ? setNewItemLoading(false) : setNewItemLoading(true);
       getMovies(offset)
           .then(onMovieListLoaded)
@@ -38,23 +38,24 @@ const MovieList = (props) => {
 
         return (
             <Col 
-                className="char__item col-12 col-md-4 col-lg-3"
+                className="char__item col-12 col-md-4 col-lg-3 gy-5"
                 tabIndex={0}
                 // ref={el => itemRefs.current[i] = el}
                 key={i}
                 // onClick={() => {
-                //     props.onCharSelected(item.id)
+                //     props.onMovieSelected(item.id)
                 //     focusOnItem(i);
                 // }}
                 // onKeyPress={(e) => {
                 //     if (e.key === ' ' || e.key === "Enter") {
-                //         props.onCharSelected(item.id);
+                //         props.onMovieSelected(item.id);
                 //         focusOnItem(i);
                 //     }
                 // }}
                 >
                     <img src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} alt={item.title}/>
-                    <div className="char__name">{item.title}</div>
+                    <div className="char__name mt-3">{item.title}</div>
+                    <div className="char__desc d-none">{item.description}</div>
             </Col>
         )
     });
@@ -67,15 +68,23 @@ const MovieList = (props) => {
     )
   }
 
+  const items = renderItems(movieList);
+
   const errorMessage = error ? <ErrorMessage/> : null;
   const spinner = loading ? <Spinner/> : null;
-  const items = renderItems(movieList);
 
   return (
     <div className="movie__list">
       {errorMessage}
       {spinner}
       {items}
+      <button 
+            disabled={newItemLoading} 
+            style={{'display' : movieEnded ? 'none' : 'block'}}
+            className="btn btn-primary btn-lg m-auto mt-4"
+            onClick={() => onRequest(offset)}>
+            <div className="inner">Load more</div>
+        </button>
     </div> 
   )
 }

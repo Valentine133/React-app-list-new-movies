@@ -5,9 +5,10 @@ const useTMDBService = () => {
 
   const _apiBase = 'https://api.themoviedb.org/3/';
   const _apiKey = 'api_key=006c1107693e917a3ce057fd35e962d7';
+  const _baseOffset = 1;
 
-  const getMovies = async () => {
-    const res = await request(`${_apiBase}discover/movie?sort_by=popularity.desc&${_apiKey}&language=en-US&page=1`);
+  const getMovies = async (offset = _baseOffset) => {
+    const res = await request(`${_apiBase}discover/movie?sort_by=popularity.desc&${_apiKey}&language=en-US&page=${offset}`);
     return res.results.map(_transformMovie);
   }
 
