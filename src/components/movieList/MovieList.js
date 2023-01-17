@@ -4,7 +4,7 @@ import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import {Row, Col} from 'react-bootstrap';
 
-const MovieList = (props) => {
+const MovieList = () => {
   const [movieList, setMovieList] = useState([]);
   const [newItemLoading, setNewItemLoading] = useState(false);
   const [offset, setOffset] = useState(1);
@@ -38,7 +38,7 @@ const MovieList = (props) => {
 
         return (
             <Col 
-                className="char__item col-12 col-md-4 col-lg-3 gy-5"
+                className="movie__item col-12 col-md-4 col-lg-3 gy-5"
                 tabIndex={0}
                 // ref={el => itemRefs.current[i] = el}
                 key={i}
@@ -54,15 +54,15 @@ const MovieList = (props) => {
                 // }}
                 >
                     <img src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} alt={item.title}/>
-                    <div className="char__name mt-3">{item.title}</div>
-                    <div className="char__desc d-none">{item.description}</div>
+                    <div className="movie__name mt-3">{item.title}</div>
+                    <div className="movie__desc d-none">{item.description}</div>
             </Col>
         )
     });
 
-    // charList wrapper 
+    // movieList wrapper 
     return (
-        <Row className="char__grid g-4">
+        <Row className="movie__grid g-4">
             {items}
         </Row>
     )
@@ -81,9 +81,9 @@ const MovieList = (props) => {
       <button 
             disabled={newItemLoading} 
             style={{'display' : movieEnded ? 'none' : 'block'}}
-            className="btn btn-primary btn-lg m-auto mt-4"
+            className="btn btn-primary btn-lg m-auto mt-5"
             onClick={() => onRequest(offset)}>
-            <div className="inner">Load more</div>
+            <div className="h5 mb-0">Load more</div>
         </button>
     </div> 
   )
