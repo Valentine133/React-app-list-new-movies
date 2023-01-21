@@ -1,0 +1,14 @@
+.movie-list {
+  &__item {
+    position: relative;
+  }
+
+  &__stars {
+    position: absolute;
+    top: 0.5rem;
+    left: 1.25rem;
+    padding: 0.25rem 0.75rem;
+    background-color: #573280;
+    line-height: 1;
+  }
+}

@@ -21,8 +21,11 @@ const useTMDBService = () => {
       return {
           id: movie.id,
           title: movie.title,
-          description: movie.description ? movie.description : 'There is no description for this movie',
-          poster_path: movie.poster_path
+          date: movie.release_date,
+          stars: movie.vote_average,
+          description: movie.overview ? movie.overview : 'There is no description for this movie',
+          poster_path: movie.poster_path,
+          backdrop_path: movie.backdrop_path
       }
   }
 

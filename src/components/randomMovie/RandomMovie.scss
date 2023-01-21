@@ -1,3 +1,38 @@
 .randomovie {
   background-color: #573280;
+
+  &__block {
+    position: relative;
+    max-height: 45vh;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: fade-out(#000, 0.7);
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    z-index: 2;
+    overflow-y: auto;
+  }
 }

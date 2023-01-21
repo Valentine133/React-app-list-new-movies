@@ -1,7 +1,6 @@
 // import { useEffect, useState } from "react";
-// import RandomMovie from "../randomMovie/RandomMovie";
-import MovieList from "../movieList/MovieList";
-import {Container} from 'react-bootstrap';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {MainPage} from '../pages';
 
 import './App.scss';
 
@@ -9,10 +8,15 @@ function App() {
   
 
   return (
-    <Container className="App py-5">
-      {/* <RandomMovie/> */}
-      <MovieList/>
-    </Container>
+    <Router>
+      <div className="App">
+        <main>
+          <Routes>
+            <Route path="/" element={<MainPage/>}/>
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
