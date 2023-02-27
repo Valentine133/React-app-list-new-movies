@@ -3,7 +3,8 @@
 
   &__block {
     position: relative;
-    max-height: 45vh;
+    height: 75vh;
+    max-height: 75vh;
     overflow: hidden;
 
     &::before {
@@ -13,26 +14,56 @@
       right: 0;
       bottom: 0;
       left: 0;
-      background: fade-out(#000, 0.7);
+      background: fade-out(#000, 0.8);
+      // background: linear-gradient(to right, #c33764, #7149a0);
+      // opacity: 0.6;
+    }
+
+    > .container {
+      max-width: 900px;
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
     }
   }
 
   &__img {
     object-fit: cover;
     width: 100%;
+    height: 100%;
   }
 
   &__info {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: left;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40%;
-    height: 100%;
-    z-index: 2;
-    overflow-y: auto;
+    .stars {
+      > svg {
+        path {
+          fill: yellow;
+        }
+      }
+    }
+  }
+
+  &__btns {
+    .btn-primary {
+      background-color: #573280;
+      border-color: #573280;
+
+      &:hover {
+        background-color: #7149a0;
+        border-color: #7149a0;
+      }
+    }
+
+    .btn-outline-primary {
+      background-color: fade-out(#573280, 0.7);
+      border-color: #7149a0;
+      color: #ffffff;
+
+      &:hover {
+        background-color: #7149a0;
+        border-color: #7149a0;
+      }
+    }
   }
 }

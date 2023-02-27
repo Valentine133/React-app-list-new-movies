@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import useTMDBService from '../../services/TMDBService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-// import {Row, Col} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 import './RandomMovie.scss';
 
@@ -25,7 +29,7 @@ const RandomMovie = (props) => {
 
   const updateMovie = () => {
     clearError();
-    const id = 2293;
+    const id = 1593;
     // const id = Math.floor(Math.random() * (2000 - 1000)) + 2000;
     getMovie(id)
         .then(onMovieLoaded);
@@ -36,7 +40,7 @@ const RandomMovie = (props) => {
   const content = !(loading || error || !movie) ? <View movie={movie}/> : null;
 
   return (
-    <div className="randomovie mb-5">
+    <div className="randomovie">
       {errorMessage}
       {spinner}
       {content}
@@ -45,18 +49,28 @@ const RandomMovie = (props) => {
 }
 
   const View = ({movie}) => {
-  const {id, title, date, description, stars, backdrop_path} = movie;
+  const {id, title, date, description, stars, backdrop_path, poster_path} = movie;
 
   return (
     <div className="randomovie__block" id={`randomovie__id-${id}`}>
       <img src={`https://image.tmdb.org/t/p/original${backdrop_path}`} alt={title} className="randomovie__img" />
-      <div className="randomovie__info p-3">
-        <h5 className="randomovie__title">{title} ({date}) <span className="stars">{stars}</span></h5>
-        <p className="randomovie__desc">{description}</p>
-        <div className="randomovie__btns">
-          <a className="btn btn-primary" href="">More</a>
-        </div>
-      </div>
+      <Container>
+        <Row className='gx-5'>
+          <Col className='col col-md-3 d-none d-md-block'>
+            <img className="w-100" src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={title}/>
+          </Col>
+          <Col className='col col-md-9 randomovie__info'>
+            <h2 className="randomovie__title">{title}</h2>
+            <h4>{date}</h4>
+            <h5 className="stars py-2"><FontAwesomeIcon icon={faStar} /> {stars}</h5>
+            <p className="randomovie__desc">{description}</p>
+            <div className="randomovie__btns">
+              <Link to={`/${id}`} className="btn btn-primary me-3">More</Link>
+              <a className='btn btn-outline-primary' href="">Play Trailer</a>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }

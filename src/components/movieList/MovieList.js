@@ -1,16 +1,14 @@
 import { useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+
 import useTMDBService from '../../services/TMDBService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import {Row, Col} from 'react-bootstrap';
 
-<<<<<<< HEAD
 import './MovieList.scss';
 
-const MovieList = (props) => {
-=======
 const MovieList = () => {
->>>>>>> main
   const [movieList, setMovieList] = useState([]);
   const [newItemLoading, setNewItemLoading] = useState(false);
   const [offset, setOffset] = useState(1);
@@ -44,46 +42,23 @@ const MovieList = () => {
 
         return (
             <Col 
-<<<<<<< HEAD
                 className="movie-list__item col gy-5"
-=======
-                className="movie__item col-12 col-md-4 col-lg-3 gy-5"
->>>>>>> main
                 tabIndex={0}
-                // ref={el => itemRefs.current[i] = el}
                 key={i}
-                // onClick={() => {
-                //     props.onMovieSelected(item.id)
-                //     focusOnItem(i);
-                // }}
-                // onKeyPress={(e) => {
-                //     if (e.key === ' ' || e.key === "Enter") {
-                //         props.onMovieSelected(item.id);
-                //         focusOnItem(i);
-                //     }
-                // }}
                 >
-<<<<<<< HEAD
-                    <img className="w-100" src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} alt={item.title}/>
-                    <div className="movie-list__stars">{item.stars}</div>
-                    <div className="movie-list__name h5 mt-3">{item.title} ({item.date})</div>
-                    <div className="movie-list__desc">{item.description}</div>
-=======
-                    <img src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} alt={item.title}/>
-                    <div className="movie__name mt-3">{item.title}</div>
-                    <div className="movie__desc d-none">{item.description}</div>
->>>>>>> main
+                    <Link to={`/${item.id}`}>
+                        <img className="w-100" src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} alt={item.title}/>
+                        <div className="movie-list__stars">{item.stars}</div>
+                        <div className="movie-list__name h5 mt-3">{item.title} ({item.date})</div>
+                        <div className="movie-list__desc">{item.description}</div>
+                    </Link>
             </Col>
         )
     });
 
     // movieList wrapper 
     return (
-<<<<<<< HEAD
         <Row className="movie-list__grid row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-=======
-        <Row className="movie__grid g-4">
->>>>>>> main
             {items}
         </Row>
     )
