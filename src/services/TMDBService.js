@@ -22,6 +22,11 @@ const useTMDBService = () => {
     return _transformMovie(res);
   }
 
+  const getPerson = async (id) => {
+    const res = await request(`${_apiBase}/person/${id}?${_apiKey}&language=en-US`);
+    return _transformPerson(res);
+  }
+
   const _transformMovies = (movie) => {
       return {
           id: movie.id,
@@ -45,11 +50,24 @@ const useTMDBService = () => {
           genres: movie.genres,
           poster_path: movie.poster_path,
           backdrop_path: movie.backdrop_path,
-          cast: movie.credits.cast
+          cast: movie.credits.cast,
+          crew: movie.credits.crew
       }
   }
 
-  return {loading, error, clearError, getMovie, getMovies, getLatestMovies}
+  const _transformPerson = (person) => {
+      return {
+          id: person.id,
+          name: person.name,
+          birthday: person.birthday,
+          popularity: person.popularity,
+          description: person.biography ? person.biography : 'There is no description for this person',
+          gender: person.gender,
+          profile_path: person.profile_path
+      }
+  }
+
+  return {loading, error, clearError, getMovie, getMovies, getLatestMovies, getPerson}
 }
 
 export default useTMDBService;

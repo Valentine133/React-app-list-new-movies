@@ -1,0 +1,21 @@
+.navigation {
+  .btn-link {
+    color: #ffffff;
+    padding-left: 0;
+    text-decoration: none;
+    font-size: 1.2em;
+
+    svg {
+      transition: .2s ease-in-out;
+      margin-right: 0.5rem;
+    }
+
+    &:hover {
+      color: #7149a0;
+
+      svg {
+        transform: translate(-0.5rem,0);
+      }
+    }
+  }
+}

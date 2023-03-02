@@ -1,29 +1,12 @@
-.movie-list {
-  &__item {
-    position: relative;
+.movie-latest-list {
+  background-color: fade-out(#7149a0, 0.7);
+  padding: 3rem 0;
 
-    > a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-  }
-
-  &__stars {
-    position: absolute;
-    top: 0.5rem;
-    left: 1.25rem;
-    padding: 0.25rem 0.75rem;
-    background-color: #573280;
-    line-height: 1;
-  }
-
-  .btn-primary {
-    background-color: #573280;
-    border-color: #573280;
-
-    &:hover {
-      background-color: #7149a0;
-      border-color: #7149a0;
+  .SwiperLatestMovies {
+    .swiper-button-prev, .swiper-button-next {
+      &:after {
+        color: #ffffff;
+      }
     }
   }
 }

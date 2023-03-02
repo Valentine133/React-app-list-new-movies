@@ -1,6 +1,6 @@
 // import { useEffect, useState } from "react";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import {MainPage, SingleMoviePage} from '../pages';
+import {MainPage, MoviesPage, SingleMoviePage, SinglePersonPage} from '../pages';
 
 import './App.scss';
 
@@ -13,7 +13,9 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<MainPage/>}/>
-            <Route path="/:movieId" element={<SingleMoviePage/>}/>
+            <Route path="/movies" element={<MoviesPage/>}/>
+            <Route path="/movies/:movieId" element={<SingleMoviePage/>}/>
+            <Route path="/:personId" element={<SinglePersonPage/>}/>
           </Routes>
         </main>
       </div>

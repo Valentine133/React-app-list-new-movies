@@ -46,11 +46,14 @@ const MovieList = () => {
                 tabIndex={0}
                 key={i}
                 >
-                    <Link to={`/${item.id}`}>
-                        <img className="w-100" src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} alt={item.title}/>
+                    <Link to={`/movies/${item.id}`}>
+                        <div className="movie-list__img-wrapp">
+                            <img className="w-100" src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} alt={item.title}/>
+                            <div className="movie-list__desc">{item.description}</div>
+                        </div>
                         <div className="movie-list__stars">{item.stars}</div>
-                        <div className="movie-list__name h5 mt-3">{item.title} ({item.date})</div>
-                        <div className="movie-list__desc">{item.description}</div>
+                        <div className="movie-list__name h5 mt-3">{item.title}</div>
+                        <div className="movie-list__name h6 mt-2">{item.date}</div>
                     </Link>
             </Col>
         )
@@ -58,9 +61,13 @@ const MovieList = () => {
 
     // movieList wrapper 
     return (
-        <Row className="movie-list__grid row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-            {items}
-        </Row>
+        <>
+            <h2 className='mb-4'>Popular movies</h2>
+            
+            <Row className="movie-list__grid row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
+                {items}
+            </Row>
+        </>
     )
   }
 

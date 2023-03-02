@@ -10,17 +10,17 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 import './RandomMovie.scss';
 
-const RandomMovie = (props) => {
+const RandomMovie = () => {
   const [movie, setMovie] = useState(null);
   const {loading, error, getMovie, clearError} =  useTMDBService();
 
   useEffect (() => {
     updateMovie();
-    // const timerId = setInterval(updateMovie, 5000);
+    const timerId = setInterval(updateMovie, 5000);
 
-    // return () => {
-    //   clearInterval(timerId)
-    // }
+    return () => {
+      clearInterval(timerId)
+    }
   }, [])
 
   const onMovieLoaded = (movie) => {
@@ -29,9 +29,9 @@ const RandomMovie = (props) => {
 
   const updateMovie = () => {
     clearError();
-    const id = 1593;
-    // const id = Math.floor(Math.random() * (2000 - 1000)) + 2000;
-    getMovie(id)
+    const arrMoviesId = [1593, 937278, 315162, 640146, 76600, 436270, 361743];
+    const id = Math.floor(Math.random() * arrMoviesId.length);
+    getMovie(arrMoviesId[id])
         .then(onMovieLoaded);
   }
 
@@ -65,7 +65,7 @@ const RandomMovie = (props) => {
             <h5 className="stars py-2"><FontAwesomeIcon icon={faStar} /> {stars}</h5>
             <p className="randomovie__desc">{description}</p>
             <div className="randomovie__btns">
-              <Link to={`/${id}`} className="btn btn-primary me-3">More</Link>
+              <Link to={`/movies/${id}`} className="btn btn-primary me-3">More</Link>
               <a className='btn btn-outline-primary' href="">Play Trailer</a>
             </div>
           </Col>
