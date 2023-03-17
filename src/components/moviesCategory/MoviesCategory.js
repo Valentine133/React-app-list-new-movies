@@ -4,16 +4,18 @@ import { Link } from 'react-router-dom';
 import useTMDBService from '../../services/TMDBService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Form, Button} from 'react-bootstrap';
 
-import './MovieList.scss';
+import './MoviesCategory.scss';
 
-const MovieList = () => {
+const MoviesCategory = () => {
   const [movieList, setMovieList] = useState([]);
+  const [query, setQuery]=useState('');
+  const [search, setSearch] = useState(false);
   const [newItemLoading, setNewItemLoading] = useState(false);
   const [offset, setOffset] = useState(1);
   const [movieEnded, setMovieEnded] = useState(false);
-  const {loading, error, getMovies} =  useTMDBService();
+  const {loading, error, getMovies, getSearch} =  useTMDBService();
 
   useEffect(() => {
       onRequest(offset, true);
@@ -35,6 +37,26 @@ const MovieList = () => {
       setNewItemLoading(newItemLoading => false);
       setOffset(offset => offset + 1);
       setMovieEnded(movieEnded => ended);
+  }
+
+  const onSearchMovies = (newMovieSearchList) => {
+      setMovieList([...newMovieSearchList])
+
+      if (query.length === 0) {
+          onRequest(1, true);
+      }
+  }
+
+  const searchMovie = async(e)=>{
+    e.preventDefault();
+
+    setSearch(query.length > 0 ? search => true : search => false);
+    getSearch(query)
+        .then(onSearchMovies)
+  }
+
+  const changeHandler=(e)=>{
+    setQuery(e.target.value);
   }
 
   function renderItems (arr) {
@@ -62,13 +84,23 @@ const MovieList = () => {
     // movieList wrapper 
     return (
         <>
-            <div className="w-100 d-flex justify-content-between mb-4">
-                <h2 className='mb-0'>Popular movies</h2>
-                <Link to="/movies" className="btn btn-primary">Go to category</Link>
-            </div>
+            <Form className="d-flex mb-4" onSubmit={searchMovie} autoComplete="off">
+              <Form.Control
+              type="search"
+              placeholder="Movie Search"
+              className="me-2"
+              aria-label="search"
+              name="query"
+              value={query} onChange={changeHandler}></Form.Control>
+              <Button className='btn btn-primary' type="submit">Search</Button>
+            </Form>
+
+            <h1 className='mb-4'>
+                {search === true ? 'Search results' : 'Movies list'}
+            </h1>
             
             <Row className="movie-list__grid row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-                {items}
+                {items.length > 0 ? items : <h2 className='w-100 mt-5'>Sorry !! No Movies Found</h2>}
             </Row>
         </>
     )
@@ -84,15 +116,16 @@ const MovieList = () => {
       {errorMessage}
       {spinner}
       {items} 
+      {search === false ?
       <button 
             disabled={newItemLoading} 
             style={{'display' : movieEnded ? 'none' : 'block'}}
             className="btn btn-primary btn-lg m-auto mt-5"
             onClick={() => onRequest(offset)}>
             <div className="h5 mb-0">Load more</div>
-        </button>
+        </button> : ''}
     </div> 
   )
 }
 
-export default MovieList;
+export default MoviesCategory;

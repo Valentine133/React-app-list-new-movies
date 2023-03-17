@@ -27,6 +27,11 @@ const useTMDBService = () => {
     return _transformPerson(res);
   }
 
+  const getSearch = async (query) => {
+    const res = await request(`${_apiBase}/search/movie?${_apiKey}&query=${query}`);
+    return res.results.map(_transformMovies);
+  }
+
   const _transformMovies = (movie) => {
       return {
           id: movie.id,
@@ -67,7 +72,7 @@ const useTMDBService = () => {
       }
   }
 
-  return {loading, error, clearError, getMovie, getMovies, getLatestMovies, getPerson}
+  return {loading, error, clearError, getMovie, getMovies, getLatestMovies, getPerson, getSearch}
 }
 
 export default useTMDBService;

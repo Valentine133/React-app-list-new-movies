@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import MovieList from "../../movieList/MovieList";
+import MoviesCategory from "../../moviesCategory/MoviesCategory";
 
 import { Container } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +13,7 @@ const MoviesPage = () => {
       <div className='navigation mb-4'>
         <Link to="/" className="single-movie__back btn btn-link"><FontAwesomeIcon icon={faArrowLeft} /> Back to home</Link>
       </div>
-      <MovieList/>
+      <MoviesCategory/>
     </Container>
   )
 }

@@ -1,0 +1,69 @@
+.movie-list {
+
+  &__item {
+    position: relative;
+
+    > a {
+      color: #ffffff;
+      text-decoration: none;
+
+      img {
+        transition: .2s ease-in-out;
+      }
+
+      &:hover {
+        img {
+          opacity: 0.8;
+        }
+
+        .movie-list__desc {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__img-wrapp {
+    position: relative;
+  }
+
+  &__desc {
+    position: absolute;
+    padding: 2.5rem 0.5rem 0.5rem;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    background-color: fade-out(#573280, 0.3);
+    visibility: hidden;
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+
+  &__stars {
+    position: absolute;
+    top: 0.5rem;
+    left: 1.25rem;
+    padding: 0.25rem 0.75rem;
+    background-color: #573280;
+    line-height: 1;
+  }
+
+  &__name {
+    &.h6 {
+      opacity: 0.7;
+    }
+  }
+
+  .btn-primary {
+    background-color: #573280;
+    border-color: #573280;
+
+    &:hover {
+      background-color: #7149a0;
+      border-color: #7149a0;
+    }
+  }
+}
