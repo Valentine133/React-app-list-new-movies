@@ -18,17 +18,17 @@ const useTMDBService = () => {
   }
 
   const getMovie = async (id) => {
-    const res = await request(`${_apiBase}/movie/${id}?${_apiKey}&append_to_response=credits&language=en-US`);
+    const res = await request(`${_apiBase}movie/${id}?${_apiKey}&append_to_response=credits&language=en-US`);
     return _transformMovie(res);
   }
 
   const getPerson = async (id) => {
-    const res = await request(`${_apiBase}/person/${id}?${_apiKey}&language=en-US`);
+    const res = await request(`${_apiBase}person/${id}?${_apiKey}&language=en-US`);
     return _transformPerson(res);
   }
 
   const getSearch = async (query) => {
-    const res = await request(`${_apiBase}/search/movie?${_apiKey}&query=${query}`);
+    const res = await request(`${_apiBase}search/movie?${_apiKey}&query=${query}`);
     return res.results.map(_transformMovies);
   }
 
