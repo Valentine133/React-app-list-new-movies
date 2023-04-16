@@ -83,7 +83,7 @@ const View = ({movie}) => {
           </Col>
           <Col className="col-12 col-md-9 col-xl-8 offset-xl-1 single-movie__desc-wrapp">
             <div className='navigation mb-4'>
-              <Link to="/movies/" className="single-movie__back btn btn-link"><FontAwesomeIcon icon={faArrowLeft} /> Back to movies</Link>
+              <Link to="/movies" className="single-movie__back btn btn-link"><FontAwesomeIcon icon={faArrowLeft} /> Back to movies</Link>
             </div>
 
             <div className="single-movie__desc mb-5">{description}</div>
@@ -93,7 +93,7 @@ const View = ({movie}) => {
             <h3 className='mb-4'>Director</h3>
             <div className="single-movie__cast row row-cols-1 row-cols-md-2 row-cols-lg-3">
               {crew.filter(person => person.job == 'Director').map((item, i) => (
-                <Link to={`/${item.id}`} key={i} className="col single-movie__cast--item mb-3 d-flex align-items-center">
+                <Link to={`persons/${item.id}`} key={i} className="col single-movie__cast--item mb-3 d-flex align-items-center">
                     <div className='me-3'>
                       <img className='rounded-circle' src={`https://image.tmdb.org/t/p/w200${item.profile_path}`} alt={item.name} />
                     </div>
@@ -105,7 +105,7 @@ const View = ({movie}) => {
             <h3 className='mb-4'>Cast</h3>
             <div className="single-movie__cast row row-cols-1 row-cols-md-2 row-cols-lg-3">
               {cast.slice(0,12).map((item, i) => (
-                <Link to={`/${item.id}`} key={i} className="col single-movie__cast--item mb-3 d-flex align-items-center">
+                <Link to={`/persons/${item.id}`} key={i} className="col single-movie__cast--item mb-3 d-flex align-items-center">
                     <div className='me-3'>
                       <img className='rounded-circle' src={`https://image.tmdb.org/t/p/w200${item.profile_path}`} alt={item.name} />
                     </div>

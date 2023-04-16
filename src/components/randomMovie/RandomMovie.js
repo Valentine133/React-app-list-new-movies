@@ -65,7 +65,7 @@ const RandomMovie = () => {
             <h5 className="stars py-2"><FontAwesomeIcon icon={faStar} /> {stars}</h5>
             <p className="randomovie__desc">{description}</p>
             <div className="randomovie__btns">
-              <Link to={`/movies/${id}`} className="btn btn-primary me-3">More</Link>
+              <Link to={`movies/${id}`} className="btn btn-primary me-3">More</Link>
               {/* <a className='btn btn-outline-primary' href="">Play Trailer</a> */}
             </div>
           </Col>
