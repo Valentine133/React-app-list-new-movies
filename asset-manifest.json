@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/React-app-list-new-movies/static/css/main.737c247d.css",
-    "main.js": "/React-app-list-new-movies/static/js/main.4e6f6497.js",
+    "main.js": "/React-app-list-new-movies/static/js/main.7ac08e68.js",
     "static/media/error.gif": "/React-app-list-new-movies/static/media/error.3b47d3b6bc93ebfdd53f.gif",
     "index.html": "/React-app-list-new-movies/index.html",
     "main.737c247d.css.map": "/React-app-list-new-movies/static/css/main.737c247d.css.map",
-    "main.4e6f6497.js.map": "/React-app-list-new-movies/static/js/main.4e6f6497.js.map"
+    "main.7ac08e68.js.map": "/React-app-list-new-movies/static/js/main.7ac08e68.js.map"
   },
   "entrypoints": [
     "static/css/main.737c247d.css",
-    "static/js/main.4e6f6497.js"
+    "static/js/main.7ac08e68.js"
   ]
 }
